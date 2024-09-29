@@ -26,12 +26,12 @@ def process_os_command(command_name, parameters):
               and the result or error message.
     """
     try:
-        # Execute the OS command and capture the result
-        result = os.popen(f"{command_name} {' '.join(parameters)}").read()
+        # Use with statement to ensure the file is closed properly
+        with os.popen(f"{command_name} {' '.join(parameters)}") as pipe:
+            result = pipe.read()
         logging.info(f"Executed OS Command: {command_name} {parameters}")
         return {"status": "success", "result": result}
     except Exception as e:
-        # Log the error and return an error message
         logging.error(f"Error executing OS command: {str(e)}")
         return {"status": "error", "message": str(e)}
 

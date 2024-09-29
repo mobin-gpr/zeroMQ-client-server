@@ -59,7 +59,7 @@ if __name__ == "__main__":
     send_command(os_command)
 
     # Print a separator line for better readability
-    print("-" * 60)
+    print("-" * 55)
 
     # Sending the math command and printing a visual separator
     print(Fore.CYAN + "Sending Math command:")

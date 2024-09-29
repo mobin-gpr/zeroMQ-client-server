@@ -48,7 +48,7 @@ if __name__ == "__main__":
         "parameters": ["127.0.0.1"],  # Parameters for the 'ping' command
     }
 
-    # Example math command: "(2 + 3) * 4"
+    # Example math command: "(6 + 4) * 8"
     math_command = {
         "command_type": "compute",
         "expression": "(6 + 4) * 8",  # Simple arithmetic expression

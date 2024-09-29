@@ -26,3 +26,22 @@ def process_os_command(command_name, parameters):
     except Exception as e:
         logging.error(f"Error executing OS command: {str(e)}")
         return {"status": "error", "message": str(e)}
+
+
+def process_math_command(expression):
+    """
+    Evaluates a simple arithmetic expression.
+
+    Args:
+        expression (str): The arithmetic expression to evaluate.
+
+    Returns:
+        dict: A dictionary containing the status (success/error) and the result or error message.
+    """
+    try:
+        result = eval(expression)
+        logging.info(f"Computed Math Expression: {expression} = {result}")
+        return {"status": "success", "result": result}
+    except Exception as e:
+        logging.error(f"Error in math computation: {str(e)}")
+        return {"status": "error", "message": str(e)}

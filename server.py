@@ -1,11 +1,12 @@
 import zmq
 import os
-import json
 import logging
 from threading import Thread
 
 # Configure logging to log all actions to 'server.log'
-logging.basicConfig(filename='server.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(
+    filename="server.log", level=logging.INFO, format="%(asctime)s - %(message)s"
+)
 
 
 def process_os_command(command_name, parameters):
@@ -78,7 +79,9 @@ def worker_routine(context, worker_id):
 
         # Determine the type of command and process it
         if message["command_type"] == "os":
-            response = process_os_command(message["command_name"], message["parameters"])
+            response = process_os_command(
+                message["command_name"], message["parameters"]
+            )
         elif message["command_type"] == "compute":
             response = process_math_command(message["expression"])
         else:

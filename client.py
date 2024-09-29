@@ -48,13 +48,13 @@ if __name__ == "__main__":
     os_command = {
         "command_type": "os",
         "command_name": "ping",
-        "parameters": ["127.0.0.1"]  # Parameters for the 'ping' command
+        "parameters": ["127.0.0.1"],  # Parameters for the 'ping' command
     }
 
     # Example math command: "(2 + 3) * 4"
     math_command = {
         "command_type": "compute",
-        "expression": "(2 + 3) * 4"  # Simple arithmetic expression
+        "expression": "(2 + 3) * 4",  # Simple arithmetic expression
     }
 
     # Sending the OS command (ping) and printing a visual separator

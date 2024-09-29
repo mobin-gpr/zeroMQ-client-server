@@ -45,3 +45,27 @@ def process_math_command(expression):
     except Exception as e:
         logging.error(f"Error in math computation: {str(e)}")
         return {"status": "error", "message": str(e)}
+
+
+def handle_request(socket):
+    """
+    Handles incoming requests from clients.
+
+    Args:
+        socket (zmq.Socket): The ZeroMQ socket to receive and send messages.
+    """
+    while True:
+        try:
+            message = socket.recv_json()
+            if message["command_type"] == "os":
+                response = process_os_command(message["command_name"], message["parameters"])
+            elif message["command_type"] == "compute":
+                response = process_math_command(message["expression"])
+            else:
+                response = {"status": "error", "message": "Invalid command type"}
+                logging.error("Invalid command type received")
+
+            socket.send_json(response)
+        except json.JSONDecodeError:
+            socket.send_json({"status": "error", "message": "Invalid JSON format"})
+            logging.error("Invalid JSON format received")

@@ -75,6 +75,7 @@ def worker_routine(context, worker_id):
 
     # Log the start of the worker
     print(Fore.CYAN + f"Worker {worker_id} started and ready to process requests...")
+    logging.info(f"Worker {worker_id} started and ready to process requests...")
 
     while True:
         # Receive a JSON message from the client via the DEALER-REP architecture

@@ -10,6 +10,26 @@ The communication between the client and server is handled using **ZeroMQ**.
 - **Command Logging**: All commands and results are logged to `server.log`.
 - **Concurrency**: Server can handle multiple requests concurrently using threads.
 - **Unit Tests**: Both the client and server have unit tests to verify functionality.
+- **Extensible Architecture**: The server's modular design allows for easy addition of new command types in the future. This extensibility ensures that the application can evolve to meet new requirements without significant refactoring.
+- **Robust Error Handling**: The application includes thorough error handling mechanisms to manage invalid or malformed commands gracefully. Users receive meaningful error messages, and unexpected issues are logged for further investigation.
+- **Colored Terminal Output:**: Utilizing the Colorama library, the client and server outputs are color-coded for enhanced readability and better user experience in the terminal.
+- **Efficient Communication with ZeroMQ**: Leveraging ZeroMQ for client-server communication ensures high-performance messaging, scalability, and flexibility in handling various communication patterns.
+- **Clean and Modular Codebase**: The project follows best coding practices with a well-structured and organized codebase. This enhances readability, maintainability, and ease of collaboration.
+
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/mobin-gpr/zeroMQ-client-server.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd zeroMQ-client-server
+```
 
 ## Requirements
 

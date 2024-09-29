@@ -15,32 +15,29 @@ def send_command(command):
     Returns:
         dict: The server's response in JSON format, containing either the result or an error message.
     """
-    # Create a ZeroMQ context for communication
-    context = zmq.Context()
+    # Use with statement to ensure that the context and socket are properly closed
+    with zmq.Context() as context:
+        with context.socket(zmq.REQ) as socket:
+            # Connect the socket to the server's address (localhost:5555)
+            socket.connect("tcp://localhost:5555")
 
-    # Create a socket of type REQ (request) to send a command and expect a response
-    socket = context.socket(zmq.REQ)
+            # Print the command being sent in yellow
+            print(Fore.YELLOW + f"Sending command: {command}")
 
-    # Connect the socket to the server's address (localhost:5555)
-    socket.connect("tcp://localhost:5555")
+            # Send the command as JSON to the server
+            socket.send_json(command)
 
-    # Print the command being sent in yellow
-    print(Fore.YELLOW + f"Sending command: {command}")
+            # Notify the user that we are waiting for the server's response
+            print(Fore.YELLOW + "Waiting for response from server...")
 
-    # Send the command as JSON to the server
-    socket.send_json(command)
+            # Receive the response from the server
+            response = socket.recv_json()
 
-    # Notify the user that we are waiting for the server's response
-    print(Fore.YELLOW + "Waiting for response from server...")
+            # Print the received response in green
+            print(Fore.GREEN + f"Received response: {response}")
 
-    # Receive the response from the server
-    response = socket.recv_json()
-
-    # Print the received response in green
-    print(Fore.GREEN + f"Received response: {response}")
-
-    # Return the server's response
-    return response
+            # Return the server's response
+            return response
 
 
 if __name__ == "__main__":

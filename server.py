@@ -1,12 +1,16 @@
 import zmq
 import os
 import logging
+from colorama import Fore, init
 from threading import Thread
 
 # Configure logging to log all actions to 'server.log'
 logging.basicConfig(
     filename="server.log", level=logging.INFO, format="%(asctime)s - %(message)s"
 )
+
+# Initialize Colorama for colorful output in the terminal
+init(autoreset=True)
 
 
 def process_os_command(command_name, parameters):
@@ -70,7 +74,7 @@ def worker_routine(context, worker_id):
     socket.connect("inproc://workers")  # Connect to the internal in-process socket
 
     # Log the start of the worker
-    print(f"Worker {worker_id} started and ready to process requests...")
+    print(Fore.CYAN + f"Worker {worker_id} started and ready to process requests...")
 
     while True:
         # Receive a JSON message from the client via the DEALER-REP architecture
@@ -117,7 +121,7 @@ def main():
     backend.bind("inproc://workers")
 
     # Log that the server has started
-    print("Server is running and listening on port 5555...")
+    print(Fore.GREEN + "Server is running and listening on port 5555...")
     logging.info("Server started and listening on port 5555")
 
     # Start worker threads to handle requests
@@ -125,7 +129,6 @@ def main():
         # Create and start a worker thread with a unique worker ID
         worker = Thread(target=worker_routine, args=(context, i))
         worker.start()
-        print(f"Worker {i} has been started.")
 
     # Use a zmq.proxy to route client requests to worker threads
     zmq.proxy(frontend, backend)

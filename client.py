@@ -1,5 +1,5 @@
 import zmq
-from colorama import Fore, Style, init
+from colorama import Fore, init
 
 # Initialize Colorama for colorful output in the terminal
 init(autoreset=True)
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # Example math command: "(2 + 3) * 4"
     math_command = {
         "command_type": "compute",
-        "expression": "(2 + 3) * 4",  # Simple arithmetic expression
+        "expression": "(6 + 4) * 8",  # Simple arithmetic expression
     }
 
     # Sending the OS command (ping) and printing a visual separator

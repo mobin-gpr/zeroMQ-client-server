@@ -52,8 +52,16 @@ def process_math_command(expression):
         result = eval(expression)
         logging.info(f"Computed Math Expression: {expression} = {result}")
         return {"status": "success", "result": result}
+    except SyntaxError:
+        # Handle syntax errors specifically
+        logging.error(f"Syntax error in math computation: {expression}")
+        return {"status": "error", "message": "Invalid expression syntax"}
+    except NameError:
+        # Handle name errors specifically
+        logging.error(f"Name error in math computation: {expression}")
+        return {"status": "error", "message": "Invalid variable name in expression"}
     except Exception as e:
-        # Log the error and return an error message
+        # Catch all other exceptions
         logging.error(f"Error in math computation: {str(e)}")
         return {"status": "error", "message": str(e)}
 

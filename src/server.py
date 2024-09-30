@@ -4,9 +4,16 @@ import logging
 from colorama import Fore, init
 from threading import Thread
 
-# Configure logging to log all actions to 'server.log'
+# Ensure the logs directory exists
+log_dir = "../logs"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
+# Configure logging to store logs in the logs/server.log file
 logging.basicConfig(
-    filename="server.log", level=logging.INFO, format="%(asctime)s - %(message)s"
+    filename=os.path.join(log_dir, "server.log"),  # Use the logs directory
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
 )
 
 # Initialize Colorama for colorful output in the terminal

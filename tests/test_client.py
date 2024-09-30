@@ -1,5 +1,5 @@
 import unittest
-from client import send_command
+from src.client import send_command
 
 
 class TestClient(unittest.TestCase):

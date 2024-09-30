@@ -14,7 +14,7 @@ The communication between the client and server is handled using **ZeroMQ**.
 - **Robust Error Handling**: The application includes thorough error handling mechanisms to manage invalid or malformed commands gracefully. Users receive meaningful error messages, and unexpected issues are logged for further investigation.
 - **Colored Terminal Output:**: Utilizing the Colorama library, the client and server outputs are color-coded for enhanced readability and better user experience in the terminal.
 - **Efficient Communication with ZeroMQ**: Leveraging ZeroMQ for client-server communication ensures high-performance messaging, scalability, and flexibility in handling various communication patterns.
-- **Clean and Modular Codebase**: The project follows best coding practices with a well-structured and organized codebase. This enhances readability, maintainability, and ease of collaboration.
+  - **Clean and Modular Codebase**: The project follows best coding practices with a well-structured and organized codebase. This enhances readability, maintainability, and ease of collaboration.
 
 
 ## Getting Started
@@ -49,6 +49,10 @@ pip install -r requirements.txt
 To start the server, simply run the following command in the terminal:
 
 ```bash
+cd src/
+```
+
+```bash
 python server.py
 ```
 The server will start and begin listening on port 5555 for incoming client requests. The server is capable of handling multiple requests concurrently using threading.
@@ -56,6 +60,10 @@ The server will start and begin listening on port 5555 for incoming client reque
 ### 2. Running the Client
 
 You can send commands to the server using the client. To run the client and send example commands (OS command and a math command):
+
+```bash
+cd src/
+```
 
 ```bash
 python client.py

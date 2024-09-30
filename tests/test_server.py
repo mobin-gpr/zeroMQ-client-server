@@ -1,5 +1,5 @@
 import unittest
-from server import process_os_command, process_math_command
+from src.server import process_os_command, process_math_command
 
 
 class TestServerFunctions(unittest.TestCase):

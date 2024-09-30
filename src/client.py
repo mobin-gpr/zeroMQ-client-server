@@ -1,5 +1,6 @@
 import zmq
 from colorama import Fore, init
+import platform
 
 # Initialize Colorama for colorful output in the terminal
 init(autoreset=True)
@@ -41,12 +42,32 @@ def send_command(command):
 
 
 if __name__ == "__main__":
+
+    # Detect the current operating system
+    current_os = platform.system()
+
     # Example OS command: "ping 127.0.0.1"
-    os_command = {
-        "command_type": "os",
-        "command_name": "ping",
-        "parameters": ["127.0.0.1"],  # Parameters for the 'ping' command
-    }
+    # Set the ping command based on the OS
+    if current_os == "Windows":
+        os_command = {
+            "command_type": "os",
+            "command_name": "ping",
+            "parameters": [
+                "127.0.0.1",
+                "-n",
+                "5",
+            ],  # '-n' for Windows to limit ping count to 5
+        }
+    else:
+        os_command = {
+            "command_type": "os",
+            "command_name": "ping",
+            "parameters": [
+                "127.0.0.1",
+                "-c",
+                "5",
+            ],  # '-c' for Linux/macOS to limit ping count to 5
+        }
 
     # Example math command: "(6 + 4) * 8"
     math_command = {

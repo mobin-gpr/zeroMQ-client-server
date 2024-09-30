@@ -55,7 +55,7 @@ cd src/
 ```bash
 python server.py
 ```
-The server will start and begin listening on port 5555 for incoming client requests. The server is capable of handling multiple requests concurrently using threading.
+The server will start and begin listening on port `5555` for incoming client requests. The server is capable of handling multiple requests concurrently using threading.
 
 ### 2. Running the Client
 
@@ -69,7 +69,7 @@ cd src/
 python client.py
 ```
 
-The client sends an OS command (ping 127.0.0.1) and a math command ((6 + 4) * 8) to the server. The server processes the commands and sends back the results, which will be displayed in the terminal.
+The client sends an OS command (`ping 127.0.0.1`) and a math command (`(6 + 4) * 8`) to the server. The server processes the commands and sends back the results, which will be displayed in the terminal.
 
 
 

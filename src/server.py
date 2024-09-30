@@ -13,7 +13,7 @@ if not os.path.exists(log_dir):
 logging.basicConfig(
     filename=os.path.join(log_dir, "server.log"),  # Use the logs directory
     level=logging.INFO,
-    format="%(asctime)s - %(message)s"
+    format="%(asctime)s - %(message)s",
 )
 
 # Initialize Colorama for colorful output in the terminal
